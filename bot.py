@@ -12,7 +12,7 @@ logger.setLevel(logging.INFO)
 
 
 class LexEvent:
-    """handles incoming and outgoing params to Lex ann validates slots"""
+    """handles incoming and outgoing params to Lex and validates slots"""
 
     def __init__(self, event):
         self.event = event
@@ -127,6 +127,10 @@ class LexEvent:
                 return error
 
         return lex.delegate()
+
+
+
+#### Intent handlers based on dispatch function
 
 
 def deliver_document(lex):
@@ -266,7 +270,6 @@ def general_contract(lex):
 def pool_service_contract(lex):
 
     if lex.invocation == "FulfillmentCodeHook":
-        # if sess email, send via email, else get an email
         return lex.fulfill()
 
     validators = [
@@ -340,6 +343,8 @@ def developer_info(lex):
 
 
 def dispatch(lex):
+    """Routes conversation based on incoming intent"""
+
     if lex.intent == "BasicHelp":
         return help_user(lex)
     if lex.intent == "ShowDocuments":
