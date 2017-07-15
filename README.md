@@ -11,3 +11,7 @@ This code is designed to run on the AWS Lambda Python 2.7 runtime. It requires a
 1. git clone https://github.com/codediodeio/lex-chatbot-lambda.git lambda
 2. cd lambda
 3. python unit_test.py
+
+## Bot Definition
+
+See bot_definition.js
